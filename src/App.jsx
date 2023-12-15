@@ -5,14 +5,14 @@ import LoginPage from './pages/loginPage/LoginPage';
 import RegisterPage from './pages/registerPage/RegisterPage';
 import TeamPage from './pages/team/TeamPage';
 import TransactionPage from './pages/transactionPage/TransactionPage'
-import Nabvar from './components/Nabvar';
+import Nabvar from './components/Navbar';
 
 function App() {
 
   return (
     <>
     <BrowserRouter>
-    <main>
+    <main className='container mx-auto px-8 py-4'>
       <Nabvar/>
       <Routes>
         { /*Public Routes */}

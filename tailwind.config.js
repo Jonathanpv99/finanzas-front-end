@@ -7,12 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'azul-f': '#000e19',
-        'azul': '#012340',
-        'azulado': '#025939',
-        'verde-f': '#027333',
-        'verde-c': '#03A63C',
-        'verde-b': '#04D939'
+        'azul-o': '#063660',
+        'azul-f': '#1B8EF2',
+        'azul-m': '#1BA0F2',
+        'azul-c': '#38BDF2',
+        'azul-v': '#38D0F2',
+        'naranja': '#F2A516'
       },
     },
   },

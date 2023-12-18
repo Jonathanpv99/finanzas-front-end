@@ -30,7 +30,7 @@ const HomePage = () => {
             <div className='max-w-xl text-center'>
                 <Slider {...settings} >
                 <div>
-                    <h1>Tarjetas credito ó debito</h1>
+                    <h1> Invierte </h1>
                     <img src={ oficina } alt="tarjeta" />
                 </div>
                 <div>
@@ -42,7 +42,7 @@ const HomePage = () => {
                     <img src={ banco } alt="banco" />
                 </div>
                 <div>
-                    <h1> invierte </h1>
+                    <h1> Tarjetas credito ó debito </h1>
                     <img src={ tarjeta } alt="grafica1" />
                 </div>
                 </Slider>

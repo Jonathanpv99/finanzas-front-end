@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCreditCard} from '@fortawesome/free-solid-svg-icons';
+
 const Nabvar = () => {
 
 
@@ -7,14 +10,17 @@ const Nabvar = () => {
             <div>
                 <Link to='/'>
                 <div className='flex gap-x-4 items-center text-white'>
+                    <FontAwesomeIcon  icon={ faCreditCard }/>
                     <h1 className='text-2xl font-bold'>Finanzas</h1>
                 </div>
                 
                 </Link>
-                
             </div>
             <div>
                 <ul className='flex gap-x-20 items-center'>
+                <li className='bg-verde-b rounded-lg p-2'>
+                    <Link to='/cards' className='font-bold'> Cards </Link>
+                    </li>
                     <li className='bg-verde-b rounded-lg p-2'>
                     <Link to='/transaction' className='font-bold'> Tranzacción </Link>
                     </li>

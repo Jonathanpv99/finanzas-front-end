@@ -31,11 +31,11 @@ const HomePage = () => {
                 <Slider {...settings} >
                 <div>
                     <h1>Tarjetas credito ó debito</h1>
-                    <img src={ tarjeta } alt="tarjeta" />
+                    <img src={ oficina } alt="tarjeta" />
                 </div>
                 <div>
                     <h1>Tramites</h1>
-                    <img src={ oficina } alt="oficina" />
+                    <img src={ dinero } alt="oficina" />
                 </div>
                 <div>
                     <h1> evita las filas</h1>
@@ -43,7 +43,7 @@ const HomePage = () => {
                 </div>
                 <div>
                     <h1> invierte </h1>
-                    <img src={ dinero } alt="grafica1" />
+                    <img src={ tarjeta } alt="grafica1" />
                 </div>
                 </Slider>
             </div>

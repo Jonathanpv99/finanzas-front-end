@@ -6,6 +6,7 @@ import RegisterPage from './pages/registerPage/RegisterPage';
 import TeamPage from './pages/team/TeamPage';
 import TransactionPage from './pages/transactionPage/TransactionPage'
 import Nabvar from './components/Navbar';
+import CardPage from './pages/cardPage/CardPage';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/team' element={ <TeamPage/> }/>
           { /*Private Routes*/ }
           <Route path='/transaction' element={ <TransactionPage/> }/>
+          <Route path='/cards' element={ <CardPage/> }/>
           
         </Routes>
     </main>

@@ -1,10 +1,16 @@
-import { useForm,} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { LoginRequest } from '../../api/auth.js';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 const HomePage = () => {
+
+    const [disable, setDisable] = useState( true );
 
     const {handleSubmit, register, formState:{
         errors
     }} = useForm();
+
+    const navigate = useNavigate();
 
     const onSubmit = handleSubmit( (data) => {
         console.log( data );
@@ -15,10 +21,17 @@ const HomePage = () => {
         try {
             const res = await LoginRequest( data.rfc );
             console.log( res );
+            setDisable( true );
+            navigate('/cards')
         } catch (error) {
-            console.log( error.data);
+            setDisable( false );
+            console.log( error);
+            setTimeout(function() {
+                setDisable( true );
+              }, 4000);
         }
     }
+
 
     return (
         <div className='flex items-center justify-center bg-azul-o h-[calc(100vh-150px)]'>
@@ -37,6 +50,7 @@ const HomePage = () => {
                         <p className='text-red-800 font-medium'>RFC is required</p>
                     )
                     }
+                    { disable ? null : <p className='text-red-800 font-medium'>Incorrect RFC</p>}
                     <div className='flex justify-end'>
                         <button type='submit' className='bg-gray-400 px-4 py-1 rounded-md mt-2 text-azul-o'>Accept</button>
                     </div>

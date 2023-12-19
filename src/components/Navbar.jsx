@@ -19,21 +19,21 @@ const Nabvar = () => {
             <div>
                 <ul className='flex gap-x-20 items-center'>
                 <li className='bg-naranja rounded-lg p-2'>
-                    <Link to='/cards' className='font-bold'> Cards </Link>
+                    <Link to='/cards' className='font-bold'> Tarjetas </Link>
                     </li>
                     <li className='bg-naranja rounded-lg p-2'>
-                    <Link to='/transaction' className='font-bold'> Tranzacción </Link>
+                    <Link to='/transaction' className='font-bold'> Movimientos </Link>
                     </li>
                     <li className='bg-azul-v rounded-lg p-2'>
-                        <Link to='/team' className='font-bold'> Team </Link>
+                        <Link to='/team' className='font-bold'> Equipo </Link>
                     </li>
                     <li className='bg-gray-400 rounded-lg p-2'>
                         <FontAwesomeIcon icon={ faArrowRightToBracket }/>
                         <Link to='/login' className='font-bold'> LogIn </Link>
                     </li>
                     <li className='bg-gray-400 rounded-lg p-2'>
-                        <FontAwesomeIcon icon={ faArrowRightFromBracket }/>
                         <Link to='/' className='font-bold'> LogOut </Link>
+                        <FontAwesomeIcon icon={ faArrowRightFromBracket }/>
                     </li>
                 </ul>
             </div>

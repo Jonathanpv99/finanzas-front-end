@@ -9,31 +9,36 @@ import Nabvar from './components/Navbar';
 import CardPage from './pages/cardPage/CardPage';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthProvider } from './context/authContext';
+import { CardProvider } from './context/cardContext';
+
 function App() {
 
   return (
     <>
     <AuthProvider>
-      <BrowserRouter>
-      <main className='container mx-auto px-8 py-4'>
-        <Nabvar/>
-        <Routes>
-          { /*Public Routes */}
-            <Route path='/' element={ <HomePage/> }/>
-            <Route path='*' element={ <HomePage/> }/>
-            <Route path='/login' element={ <LoginPage/> }/>
-            <Route path='/register' element={ <RegisterPage/> }/>
-            <Route path='/team' element={ <TeamPage/> }/>
+      <CardProvider>
 
-            { /*Private Routes*/ }
-            <Route element={ <ProtectedRoute/>}>
-              <Route path='/transaction' element={ <TransactionPage/> }/>
-              <Route path='/cards' element={ <CardPage/> }/>
-            </Route>
-          </Routes>
-      </main>
-      
-    </BrowserRouter>
+        <BrowserRouter>
+          <main className='container mx-auto px-8 py-4'>
+            <Nabvar/>
+            <Routes>
+              { /*Public Routes */}
+                <Route path='/' element={ <HomePage/> }/>
+                <Route path='*' element={ <HomePage/> }/>
+                <Route path='/login' element={ <LoginPage/> }/>
+                <Route path='/register' element={ <RegisterPage/> }/>
+                <Route path='/team' element={ <TeamPage/> }/>
+
+                { /*Private Routes*/ }
+                <Route element={ <ProtectedRoute/>}>
+                  <Route path='/transaction' element={ <TransactionPage/> }/>
+                  <Route path='/cards' element={ <CardPage/> }/>
+                </Route>
+            </Routes>
+          </main>
+        </BrowserRouter>
+
+      </CardProvider>
    </AuthProvider> 
     </>
    

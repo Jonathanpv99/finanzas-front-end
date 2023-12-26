@@ -1,9 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard, faArrowRightToBracket, faArrowUpFromBracket, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard, faArrowRightToBracket, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../context/authContext';
+import { useEffect } from 'react';
 
 const Nabvar = () => {
 
+    const  { logout, isAutenticated} = useAuth();
+
+    const navigate = useNavigate();
+
+    const deleteToken = () => {
+        logout();
+    }
 
     return (
         <nav className="bg-azul-f text-azul-o my-3 py-5 px-10 rounded-lg flex justify-around items-center">
@@ -18,23 +27,38 @@ const Nabvar = () => {
             </div>
             <div>
                 <ul className='flex gap-x-20 items-center'>
-                <li className='bg-naranja rounded-lg p-2'>
-                    <Link to='/cards' className='font-bold'> Tarjetas </Link>
-                    </li>
-                    <li className='bg-naranja rounded-lg p-2'>
-                    <Link to='/transaction' className='font-bold'> Movimientos </Link>
-                    </li>
+                    {isAutenticated ? (
+                        <>
+                            <li className='bg-naranja rounded-lg p-2'>
+                            <Link to='/cards' className='font-bold'> Tarjetas </Link>
+                            </li>
+                            <li className='bg-naranja rounded-lg p-2'>
+                            <Link to='/transaction' className='font-bold'> Movimientos </Link>
+                            </li>
+                        </>
+                    ): null }
                     <li className='bg-azul-v rounded-lg p-2'>
                         <Link to='/team' className='font-bold'> Equipo </Link>
                     </li>
-                    <li className='bg-gray-400 rounded-lg p-2'>
-                        <FontAwesomeIcon icon={ faArrowRightToBracket }/>
-                        <Link to='/login' className='font-bold'> LogIn </Link>
-                    </li>
-                    <li className='bg-gray-400 rounded-lg p-2'>
-                        <Link to='/' className='font-bold'> LogOut </Link>
-                        <FontAwesomeIcon icon={ faArrowRightFromBracket }/>
-                    </li>
+                    { !isAutenticated? (
+                        <>
+                            <li className='bg-gray-400 rounded-lg p-2'>
+                            <Link to='/login' className='font-bold'> 
+                                <FontAwesomeIcon icon={ faArrowRightToBracket }/>
+                                LogIn 
+                            </Link>
+                            </li>
+                        </>
+                    ): (
+                        <>
+                            <li onClick={ deleteToken } className='bg-gray-400 rounded-lg p-2 font-bold'>
+                                <Link to='/login' className='font-bold'> 
+                                    <FontAwesomeIcon icon={ faArrowRightToBracket }/>
+                                    LogOut 
+                                </Link>
+                            </li>
+                        </>
+                    )}
                 </ul>
             </div>
         </nav>

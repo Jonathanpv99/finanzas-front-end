@@ -6,3 +6,10 @@ body{
     background-color: #063660;
     color: white;
 }
+
+.card-bg {
+    background-image: url('../fondo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }

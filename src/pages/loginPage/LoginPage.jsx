@@ -1,36 +1,28 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { LoginRequest } from '../../api/auth.js';
-import { useState } from 'react';
+import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom'
-const HomePage = () => {
 
-    const [disable, setDisable] = useState( true );
+const HomePage = () => {
 
     const {handleSubmit, register, formState:{
         errors
     }} = useForm();
 
+    const { login, errors: disable, isAutenticated} = useAuth();
+
     const navigate = useNavigate();
+
+    useEffect( () => {
+       if( isAutenticated ) navigate('/cards')
+    }, [ isAutenticated ]);
 
     const onSubmit = handleSubmit( (data) => {
         console.log( data );
-        signin( data );
+        login( data );
     }); 
 
-    const signin = async ( data ) => {
-        try {
-            const res = await LoginRequest( data.rfc );
-            console.log( res );
-            setDisable( true );
-            navigate('/cards')
-        } catch (error) {
-            setDisable( false );
-            console.log( error);
-            setTimeout(function() {
-                setDisable( true );
-              }, 4000);
-        }
-    }
+
 
 
     return (
@@ -50,7 +42,7 @@ const HomePage = () => {
                         <p className='text-red-800 font-medium'>RFC is required</p>
                     )
                     }
-                    { disable ? null : <p className='text-red-800 font-medium'>Incorrect RFC</p>}
+                    { !disable ? null : <p className='text-red-800 font-medium'>Incorrect RFC</p>}
                     <div className='flex justify-end'>
                         <button type='submit' className='bg-gray-400 px-4 py-1 rounded-md mt-2 text-azul-o'>Accept</button>
                     </div>

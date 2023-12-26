@@ -7,29 +7,34 @@ import TeamPage from './pages/team/TeamPage';
 import TransactionPage from './pages/transactionPage/TransactionPage'
 import Nabvar from './components/Navbar';
 import CardPage from './pages/cardPage/CardPage';
-
+import ProtectedRoute from './ProtectedRoute';
+import { AuthProvider } from './context/authContext';
 function App() {
 
   return (
     <>
-    <BrowserRouter>
-    <main className='container mx-auto px-8 py-4'>
-      <Nabvar/>
-      <Routes>
-        { /*Public Routes */}
-          <Route path='/' element={ <HomePage/> }/>
-          <Route path='*' element={ <HomePage/> }/>
-          <Route path='/login' element={ <LoginPage/> }/>
-          <Route path='/register' element={ <RegisterPage/> }/>
-          <Route path='/team' element={ <TeamPage/> }/>
-          { /*Private Routes*/ }
-          <Route path='/transaction' element={ <TransactionPage/> }/>
-          <Route path='/cards' element={ <CardPage/> }/>
-          
-        </Routes>
-    </main>
-    
-   </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+      <main className='container mx-auto px-8 py-4'>
+        <Nabvar/>
+        <Routes>
+          { /*Public Routes */}
+            <Route path='/' element={ <HomePage/> }/>
+            <Route path='*' element={ <HomePage/> }/>
+            <Route path='/login' element={ <LoginPage/> }/>
+            <Route path='/register' element={ <RegisterPage/> }/>
+            <Route path='/team' element={ <TeamPage/> }/>
+
+            { /*Private Routes*/ }
+            <Route element={ <ProtectedRoute/>}>
+              <Route path='/transaction' element={ <TransactionPage/> }/>
+              <Route path='/cards' element={ <CardPage/> }/>
+            </Route>
+          </Routes>
+      </main>
+      
+    </BrowserRouter>
+   </AuthProvider> 
     </>
    
   )

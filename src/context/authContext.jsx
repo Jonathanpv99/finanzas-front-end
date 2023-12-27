@@ -19,10 +19,10 @@ export const AuthProvider = ( { children } ) => {
     const [ loading, SetLoading ] = useState( true );
     const [ errors, SetErrors ] = useState( false );
     const [ isAutenticated, SetIsAutenticated ] = useState( false );
-    const [ user, SetUser ] = useState( {} );
+    const [ user, SetUser ] = useState( null );
 
     useEffect( () => {
-        if( errors.length > 0 ){
+        if( errors === true ){
             const timer = setTimeout( () => {
                 SetErrors(false);
             }, 6000)
@@ -35,6 +35,7 @@ export const AuthProvider = ( { children } ) => {
         checkCSRFToken();
     }, []);
 
+
     const checkLogin = async () => {
         const cookies = Cookie.get();
 
@@ -46,11 +47,18 @@ export const AuthProvider = ( { children } ) => {
         }
     }
 
+    const getId = () => {
+        const usr = `${user.nombre} ${ user.apellido}`;
+        localStorage.setItem('user', usr);
+        const id = user.idUsuario;
+        localStorage.setItem('idU', id);
+    }
+
     const login = async ( data ) => {
         try {
             const res = await LoginRequest( data.rfc );
             SetLoading( false );
-            SetUser(res.data.usuario);
+            SetUser( res.data.usuario );
             SetIsAutenticated( true );
         } catch (error) {
             SetLoading( false );
@@ -66,6 +74,7 @@ export const AuthProvider = ( { children } ) => {
         SetErrors( false );
         SetLoading( false );
         Cookie.remove('logintoken');
+        localStorage.removeItem('idU');
     }
 
     return (
@@ -77,6 +86,7 @@ export const AuthProvider = ( { children } ) => {
             login,
             logout,
             checkLogin,
+            getId,
         }}>
             { children }
         </AuthContext.Provider>

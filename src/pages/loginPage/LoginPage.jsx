@@ -11,6 +11,7 @@ const HomePage = () => {
 
     const { login, errors: disable, isAutenticated} = useAuth();
 
+
     const navigate = useNavigate();
 
     useEffect( () => {
@@ -18,7 +19,7 @@ const HomePage = () => {
     }, [ isAutenticated ]);
 
     const onSubmit = handleSubmit( (data) => {
-        console.log( data );
+        //console.log( data );
         login( data );
     }); 
 

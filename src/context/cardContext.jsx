@@ -16,12 +16,13 @@ export const CardProvider = ( { children } ) => {
 
     const [ cards, SetCards ] = useState( [] );
 
-    const [ card, SetCard ] = useState( {} );
+    const [ card, SetCard ] = useState( null );
 
     const getCards = async ( id ) => {
         try {
             const res = await getCardsRequest( id );
-            console.log( res );
+            SetCards( res.data);
+            console.log( res.data)
         } catch (error) {
             console.log( error.message );
         }
@@ -72,6 +73,7 @@ export const CardProvider = ( { children } ) => {
             createCard,
             getCard,
             getCards,
+            cards,
         }}>
             { children }
         </CardContext.Provider>

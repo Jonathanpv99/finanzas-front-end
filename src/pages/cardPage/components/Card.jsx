@@ -11,16 +11,16 @@ const Card = (props) => {
                 </div>
             </div>
             <div className="text-2xl font-bold mt-2 mx-2 text-center">
-                <h1>1234 3456 4534 3456</h1>
+                <h1>{ props.number }</h1>
             </div>
             <div className="flex justify-between pb-2">
                 <div className="flex flex-col ml-5">
                     <p className="text-xs">Name:</p>
-                    <p>Jonathan Peña</p>
+                    <p>{ props.name }</p>
                 </div>
                 <div className="flex flex-col mr-4">
                     <p className="text-xs">Valid until:</p>
-                    <p className="ml-2">07/23</p>
+                    <p className="ml-2">{ props.date }</p>
                 </div>
 
             </div>

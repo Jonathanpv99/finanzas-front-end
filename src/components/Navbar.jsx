@@ -9,6 +9,7 @@ const Nabvar = () => {
     const  { logout, isAutenticated} = useAuth();
 
     const navigate = useNavigate();
+    
 
     const deleteToken = () => {
         logout();
@@ -33,7 +34,7 @@ const Nabvar = () => {
                             <Link to='/cards' className='font-bold'> Tarjetas </Link>
                             </li>
                             <li className='bg-naranja rounded-lg p-2'>
-                            <Link to='/transaction' className='font-bold'> Movimientos </Link>
+                            <Link to='/transaction' className='font-bold'>Historial Movimientos </Link>
                             </li>
                         </>
                     ): null }

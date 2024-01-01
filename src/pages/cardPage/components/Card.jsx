@@ -3,8 +3,9 @@ const Card = (props) => {
     return (
         <div className="card-bg rounded-md flex flex-col gap-3 border border-azul-f">
             <div className="flex justify-between mx-2">
-                <div className="flex justify-start mt-20 ml-5">
-                    <img src={ '../../../../chip.jpg' } className="w-14" alt="chip" />
+                <div className="flex flex-col gap-5 justify-start  mt-16 ml-5">
+                    <p className="text-xs">{ props.bank }</p>
+                    <img src={ '../../../../chip.jpg' } className="w-14 " alt="chip" />
                 </div>
                 <div className="flex justify-end mt-5">
                     <img src={ '../../../../visa.png'  } className="w-14 h-10" alt="visa" />

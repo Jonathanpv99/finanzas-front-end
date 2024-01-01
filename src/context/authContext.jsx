@@ -75,6 +75,7 @@ export const AuthProvider = ( { children } ) => {
         SetLoading( false );
         Cookie.remove('logintoken');
         localStorage.removeItem('idU');
+        localStorage.removeItem('user');
     }
 
     return (

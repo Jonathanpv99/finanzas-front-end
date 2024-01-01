@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom'
+import { toast } from "react-toastify";
 
 const HomePage = () => {
 
@@ -9,13 +10,23 @@ const HomePage = () => {
         errors
     }} = useForm();
 
-    const { login, errors: disable, isAutenticated} = useAuth();
-
+    const { login, errors: disable, isAutenticated, user} = useAuth();
+    const { nombre, apellido } = user;
 
     const navigate = useNavigate();
 
+    const MessageLogin = () => {
+        toast.success(`Bienvenido ${ nombre } ${ apellido }`, {
+        position: toast.POSITION.TOP_RIGHT,
+        });
+    };
+
     useEffect( () => {
-       if( isAutenticated ) navigate('/cards')
+       if( isAutenticated ){
+            MessageLogin();
+            navigate('/cards');
+            
+       } 
     }, [ isAutenticated ]);
 
     const onSubmit = handleSubmit( (data) => {
@@ -50,6 +61,7 @@ const HomePage = () => {
                 </form>
                 
             </div>
+            
         </div>
     )
 }

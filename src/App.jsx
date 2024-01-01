@@ -10,6 +10,8 @@ import CardPage from './pages/cardPage/CardPage';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthProvider } from './context/authContext';
 import { CardProvider } from './context/cardContext';
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 
@@ -35,6 +37,7 @@ function App() {
                   <Route path='/cards' element={ <CardPage/> }/>
                 </Route>
             </Routes>
+            <ToastContainer />
           </main>
         </BrowserRouter>
 

@@ -2,6 +2,8 @@ import Card from "./components/Card";
 import { useCard } from "../../context/cardContext";
 import { useAuth } from "../../context/authContext";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 const CardPage = () => {
 
@@ -23,16 +25,23 @@ const CardPage = () => {
     },[])
 
     return (
-        <div className="grid grid-cols-4 gap-5 m-10">
-                { cards.map ( ( card ) => 
+        <div className="g m-10">
+            <div className=" mb-5 flex justify-end">
+                <button className='bg-[#FA508E] rounded-lg p-2'> 
+                    Agregar <FontAwesomeIcon icon={ faPlusCircle }/>
+                </button>
+            </div>
+            <div className="bg-azul-f grid grid-cols-4 gap-5 p-4 rounded-lg">
+            { cards.map ( ( card ) => 
                     <Card 
                         key={ card.idTarjeta } 
                         number={ card.numero } 
                         date={ card.fechaVencimiento } 
                         name={ name } 
-                        company={ card.compania }
+                        bank={ card.compania }
                     />
                 )}
+            </div>
         </div>
     )
 }

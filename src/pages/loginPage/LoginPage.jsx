@@ -11,12 +11,12 @@ const HomePage = () => {
     }} = useForm();
 
     const { login, errors: disable, isAutenticated, user} = useAuth();
-    const { nombre, apellido } = user;
+    
 
     const navigate = useNavigate();
 
     const MessageLogin = () => {
-        toast.success(`Bienvenido ${ nombre } ${ apellido }`, {
+        toast.success(`Bienvenido ${ user.nombre } ${ user.apellido }`, {
         position: toast.POSITION.TOP_RIGHT,
         });
     };
@@ -51,7 +51,7 @@ const HomePage = () => {
                     />
                     {
                     errors.rfc && (
-                        <p className='text-red-800 font-medium'>RFC is required</p>
+                        <p className='text-red-800 font-medium'>RFC es requerido</p>
                     )
                     }
                     { !disable ? null : <p className='text-red-800 font-medium'>Incorrect RFC</p>}

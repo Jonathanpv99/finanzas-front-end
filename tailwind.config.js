@@ -12,7 +12,8 @@ export default {
         'azul-m': '#1BA0F2',
         'azul-c': '#38BDF2',
         'azul-v': '#38D0F2',
-        'naranja': '#F2A516'
+        'naranja': '#F2A516',
+        'rose': '#FA508E'
       },
     },
   },

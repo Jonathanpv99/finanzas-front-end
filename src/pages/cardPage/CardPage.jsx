@@ -11,11 +11,7 @@ const CardPage = () => {
 
     const [ name, SetName ] = useState("");
 
-    //modal de agregar 
     const [modalAdd, SetModalAdd] = useState( false );
-
-    //modal de transferencias
-    const [cardModal, SetCardModal] = useState( false );
 
     const { getCards, cards } = useCard();
     const { user, getId } = useAuth();
@@ -33,7 +29,7 @@ const CardPage = () => {
     },[])
 
     //manejo de los modales
-        //* Modal add card  */
+
     const showModalAdd = () => {
         SetModalAdd( true );
       };
@@ -46,24 +42,10 @@ const CardPage = () => {
         SetModalAdd( false );
       };
 
-      //* Modal card transaction  */
-
-      const showModalTrans = () => {
-        SetCardModal( true );
-      };
-    
-      const OkTrans = () => {
-        SetCardModal( false );
-      };
-    
-      const CancelTrans = () => {
-        SetCardModal( false );
-      };
-
     return (
-        <div className="g m-10">
+        <div className="g m-8">
             <div className=" mb-5 flex justify-end">
-                <button onClick={ showModalAdd } className='bg-[#FA508E] rounded-lg p-2'> 
+                <button onClick={ showModalAdd } className='bg-rose rounded-lg p-2'> 
                     Agregar <FontAwesomeIcon icon={ faPlusCircle }/>
                 </button>
             </div>
@@ -75,6 +57,8 @@ const CardPage = () => {
                         date={ card.fechaVencimiento } 
                         name={ name } 
                         bank={ card.compania }
+                        saldo={ card.saldo }
+                        edit={ showModalAdd }
                     />
                 )}
             </div>
@@ -84,11 +68,6 @@ const CardPage = () => {
                 onCancel={CancelAdd}
             />
 
-            <CardModal
-                isVisible={cardModal}
-                onOk={OkTrans}
-                onCancel={CancelTrans}
-            />
         </div>
     )
 }

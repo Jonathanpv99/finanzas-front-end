@@ -1,9 +1,9 @@
 
 import { useForm } from 'react-hook-form';
 
-import { Modal } from 'antd';
+import { Modal, Button } from 'antd';
 
-const CardModal = ( { isVisible, onOk, onCancel } ) => {
+const CardModal = ( { isVisible, onOk, onCancel, banco, saldo, numero } ) => {
 
     const {handleSubmit, register, formState:{
         errors
@@ -19,62 +19,39 @@ const CardModal = ( { isVisible, onOk, onCancel } ) => {
           open={ isVisible }
           onOk={onOk}
           onCancel={onCancel}
+          footer={[
+            <Button key="cancel" className='bg-red-700 text-white' onClick={ onCancel }>
+              Cancelar
+            </Button>,
+            <Button key="ok" className='bg-rose text-white'>
+              Agregar
+            </Button>,
+          ]}
         >
-          <form onSubmit={ onSubmit }>
-          <input type="text" 
-                { ...register('banco', { required: true})}
-                className='w-80 px-4 py-2 rounded-md my-2 mt-3'
-                placeholder='Banco'
-            />
-            {
-            errors.banco && (
-            <p className='text-red-800 font-medium'>Banco es requerido</p>
-            )}
+          <form onSubmit={ onSubmit } className='p-3 bg-azul-m rounded-lg font-bold'>
+            <p>Banco:</p>
             <input type="text" 
-                { ...register('tipo', { required: true})}
-                className='w-80 px-4 py-2 rounded-md my-2 mt-3'
-                placeholder='Banco'
-            />
-            {
-            errors.tipo && (
-            <p className='text-red-800 font-medium'>Tipo es requerdio</p>
-            )}
-            <input type="number" 
-                { ...register('numero', { required: true})}
-                className='w-80 px-4 py-2 rounded-md my-2 mt-3'
-                placeholder='0000000000000000'
-            />
-            {
-            errors.numero && (
-            <p className='text-red-800 font-medium'>Numero es requerido</p>
-            )}
-            <input type="number" 
-                { ...register('cvv', { required: true})}
-                className='w-80 px-4 py-2 rounded-md my-2 mt-3'
-                placeholder='000'
-            />
-            {
-            errors.cvv && (
-            <p className='text-red-800 font-medium'>CVV es requerido</p>
-            )}
-            <input type="text" 
-                { ...register('fecha', { required: true})}
-                className='w-80 px-4 py-2 rounded-md my-2 mt-3'
-                placeholder='01/24'
-            />
-            {
-            errors.fecha && (
-            <p className='text-red-800 font-medium'>Fecha es requerida</p>
-            )}
-            <input type="number" 
-                { ...register('saldo', { required: true})}
-                className='w-80 px-4 py-2 rounded-md my-2 mt-3'
-                placeholder='100.00'
-            />
-            {
-            errors.saldo && (
-            <p className='text-red-800 font-medium'>Saldo es requerido</p>
-            )}
+                    { ...register('banco', { required: true})}
+                    className='w-80 px-4 py-2 rounded-md my-2 mt-3'
+                    value={ banco }
+                    disabled
+                />
+                <p>Numero:</p>
+                <input type="number" 
+                    { ...register('numero', { required: true})}
+                    className='w-80 px-4 py-2 rounded-md my-2 mt-3'
+                    value={ numero }
+                    disabled
+                />
+
+                <p>Saldo: $</p>
+                <input type="number" 
+                    { ...register('saldo', { required: true})}
+                    className='w-80 px-4 py-2 rounded-md my-2 mt-3'
+                    value={ saldo }
+                    disabled
+                />
+                
           </form>
         </Modal>
     );

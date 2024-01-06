@@ -20,6 +20,10 @@ export const CardProvider = ( { children } ) => {
 
     const [ resp, SetResp ] = useState( null );
 
+    const [ respU, SetRespU ] = useState( null );
+
+    const [ respD, SetRespD ] = useState( null );
+
     const getCards = async ( id ) => {
         try {
             const res = await getCardsRequest( id );
@@ -33,9 +37,9 @@ export const CardProvider = ( { children } ) => {
     const getCard = async ( id ) => {
         try {
             const res = await getCardRequest( id );
-            console.log( res );
+           SetCard( res.data );
         } catch (error) {
-            console.log( error.message );
+            console.log(error)
         }
     }
 
@@ -55,9 +59,12 @@ export const CardProvider = ( { children } ) => {
     const updateCard = async ( id, card) => {
         try {
             const res = await updateCardRequest( id, card);
-            console.log( res );
+            SetRespU( res.status );
         } catch (error) {
-            console.log( error.message );
+            SetResp( error.response.status );
+            setTimeout(function() {
+                SetRespU( null );
+            }, 4000);
         }
     }
 
@@ -80,6 +87,7 @@ export const CardProvider = ( { children } ) => {
             getCard,
             getCards,
             cards,
+            card,
             resp,
         }}>
             { children }

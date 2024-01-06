@@ -1,11 +1,18 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardModal from "./CardModal";
+import CardEditModal from "./CardEditModal";
+import CardDeleteModal from "./CardDeleteModal";
 
-const Card = ( { bank, number, name, date, saldo, edit}) => {
+const Card = ( { bank, number, name, date, saldo, id }) => {
 
     const [cardModal, SetCardModal] = useState( false );
 
+    const [editModal, SetEditModal] = useState( false );
+
+    const [deleteModal, SetDeleteModal] = useState( false );
+
+    //Modal de transacciones
           const showModalTrans = () => {
             SetCardModal( true );
           };
@@ -17,9 +24,33 @@ const Card = ( { bank, number, name, date, saldo, edit}) => {
           const CancelTrans = () => {
             SetCardModal( false );
           };
+    //Modal de eliminar 
+          const showModalEdit = () => {
+            SetEditModal( true );
+          };
+        
+          const OkEdit = () => {
+            SetEditModal( false );
+          };
+        
+          const CancelEdit = () => {
+            SetEditModal( false );
+          };
+     //Modal de eliminar 
+          const showModalDelete = () => {
+            SetDeleteModal( true );
+          };
+        
+          const OkDelete = () => {
+            SetDeleteModal( false );
+          };
+        
+          const CancelDelete = () => {
+            SetDeleteModal( false );
+          };
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 rounded-lg">
             <div className="card-bg rounded-md flex flex-col gap-3 border border-azul-f">
                 <div className="flex justify-between mx-2">
                     <div className="flex flex-col gap-5 justify-start  mt-16 ml-5">
@@ -45,9 +76,10 @@ const Card = ( { bank, number, name, date, saldo, edit}) => {
 
                 </div>
             </div>
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-around gap-2">
                 <button onClick={ showModalTrans } className='bg-rose rounded-lg p-2'> acciones</button>
-                <button onClick={ edit } className='bg-azul-o rounded-lg p-2'> editar</button>
+                <button onClick={ showModalEdit } className='bg-azul-o rounded-lg p-2'> editar</button>
+                <button onClick={ showModalDelete } className='bg-red-900 rounded-lg p-2 text-white'> eliminar</button>
             </div>
             <CardModal
                 isVisible={cardModal}
@@ -57,6 +89,20 @@ const Card = ( { bank, number, name, date, saldo, edit}) => {
                 banco={ bank }
                 saldo={ saldo }
             />
+            <CardEditModal
+                isVisible={editModal}
+                onOk={OkEdit}
+                onCancel={CancelEdit}
+                id={ id }
+            />
+            <CardDeleteModal
+                isVisible={deleteModal}
+                onOk={OkDelete}
+                onCancel={CancelDelete}
+                numero={ number }
+                banco={ bank }
+            />
+
         </div>
 
         

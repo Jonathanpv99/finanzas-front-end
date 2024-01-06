@@ -58,7 +58,7 @@ const CardPage = () => {
                         name={ name } 
                         bank={ card.compania }
                         saldo={ card.saldo }
-                        edit={ showModalAdd }
+                        id={ card.idTarjeta }
                     />
                 )}
             </div>

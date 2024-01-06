@@ -2,13 +2,13 @@
 import { useForm } from 'react-hook-form';
 import { Modal, Button } from 'antd';
 import { useCard } from '../../../context/cardContext';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { toast } from "react-toastify";
 
 const CardNewModal = ( { isVisible, onOk, onCancel } ) => {
 
 
-    const{  updateCard, createCard, resp } = useCard();
+    const{ createCard, resp } = useCard();
 
     const {handleSubmit, register, reset, formState:{
         errors
@@ -17,27 +17,37 @@ const CardNewModal = ( { isVisible, onOk, onCancel } ) => {
     const onSubmit = handleSubmit( (data) => {
         const idU = localStorage.getItem('idU');
         const datos = data;
-        datos.propietario = 'k';
+        datos.propietario = idU;
         createCard( datos );
     }); 
 
     useEffect( () => {
       if( resp === 201 ) {
-        location.reload();
-        onCancel;
-      } 
-      if( resp !== null && resp !== 201) {
+        MessageSuccess();
+        setTimeout(function() {
+          location.reload();
+          onCancel;
+        }, 3500);
+        
+      } else if( resp !== null && resp !== 201 && resp !== undefined) {
         reset();
         MessageError();
+        console.log(" trono ")
       }
-    },[ resp ]);
+    },[resp]);
 
 
     const MessageError = () => {
       toast.error(`Algo salio mal`, {
       position: toast.POSITION.TOP_CENTER,
       });
-  };
+    };
+
+    const MessageSuccess = () => {
+      toast.success(`Tarjeta Registrada con Exito`, {
+      position: toast.POSITION.TOP_CENTER,
+      });
+    };
 
     return (
         <Modal

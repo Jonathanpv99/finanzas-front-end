@@ -54,8 +54,8 @@ const Nabvar = () => {
                         <>
                             <li onClick={ deleteToken } className='bg-gray-400 rounded-lg p-2 font-bold'>
                                 <Link to='/login' className='font-bold'> 
-                                    <FontAwesomeIcon icon={ faArrowRightToBracket }/>
-                                    LogOut 
+                                    LogOut..
+                                    <FontAwesomeIcon icon={ faArrowRightFromBracket }/> 
                                 </Link>
                             </li>
                         </>

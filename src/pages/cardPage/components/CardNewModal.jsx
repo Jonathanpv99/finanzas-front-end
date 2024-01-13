@@ -32,7 +32,6 @@ const CardNewModal = ( { isVisible, onOk, onCancel } ) => {
       } else if( resp !== null && resp !== 201 && resp !== undefined) {
         reset();
         MessageError();
-        console.log(" trono ")
       }
     },[resp]);
 

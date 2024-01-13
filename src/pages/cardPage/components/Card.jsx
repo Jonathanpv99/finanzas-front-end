@@ -17,20 +17,12 @@ const Card = ( { bank, number, name, date, saldo, id }) => {
             SetCardModal( true );
           };
         
-          const OkTrans = () => {
-            SetCardModal( false );
-          };
-        
           const CancelTrans = () => {
             SetCardModal( false );
           };
-    //Modal de eliminar 
+    //Modal de editar
           const showModalEdit = () => {
             SetEditModal( true );
-          };
-        
-          const OkEdit = () => {
-            SetEditModal( false );
           };
         
           const CancelEdit = () => {
@@ -40,10 +32,7 @@ const Card = ( { bank, number, name, date, saldo, id }) => {
           const showModalDelete = () => {
             SetDeleteModal( true );
           };
-        
-          const OkDelete = () => {
-            SetDeleteModal( false );
-          };
+      
         
           const CancelDelete = () => {
             SetDeleteModal( false );
@@ -83,7 +72,6 @@ const Card = ( { bank, number, name, date, saldo, id }) => {
             </div>
             <CardModal
                 isVisible={cardModal}
-                onOk={OkTrans}
                 onCancel={CancelTrans}
                 numero={ number }
                 banco={ bank }
@@ -91,16 +79,15 @@ const Card = ( { bank, number, name, date, saldo, id }) => {
             />
             <CardEditModal
                 isVisible={editModal}
-                onOk={OkEdit}
                 onCancel={CancelEdit}
                 id={ id }
             />
             <CardDeleteModal
                 isVisible={deleteModal}
-                onOk={OkDelete}
                 onCancel={CancelDelete}
                 numero={ number }
                 banco={ bank }
+                id={ id }
             />
 
         </div>

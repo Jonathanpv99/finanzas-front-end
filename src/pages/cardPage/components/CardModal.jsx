@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import { Modal, Button } from 'antd';
 
-const CardModal = ( { isVisible, onOk, onCancel, banco, saldo, numero } ) => {
+const CardModal = ( { isVisible, onCancel, banco, saldo, numero } ) => {
 
     const {handleSubmit, register, formState:{
         errors
@@ -17,7 +17,6 @@ const CardModal = ( { isVisible, onOk, onCancel, banco, saldo, numero } ) => {
         <Modal
           title="Realiza una transaccción"
           open={ isVisible }
-          onOk={onOk}
           onCancel={onCancel}
           footer={[
             <Button key="cancel" className='bg-red-700 text-white' onClick={ onCancel }>

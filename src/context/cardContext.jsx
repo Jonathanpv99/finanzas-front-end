@@ -51,7 +51,7 @@ export const CardProvider = ( { children } ) => {
             SetResp( error.response.status );
             setTimeout(function() {
                 SetResp( null );
-            }, 4000);
+            }, 2000);
 
         }
     }
@@ -64,7 +64,7 @@ export const CardProvider = ( { children } ) => {
             SetResp( error.response.status );
             setTimeout(function() {
                 SetRespU( null );
-            }, 4000);
+            }, 2000);
         }
     }
 
@@ -72,9 +72,9 @@ export const CardProvider = ( { children } ) => {
 
         try {
             const res = await deletCardRequest( id );
-            console.log( res );
+            SetRespD( res.status );
         } catch (error) {
-            console.log( error.message );
+            SetRespD( error.response.status );
         }
 
     }
@@ -89,6 +89,8 @@ export const CardProvider = ( { children } ) => {
             cards,
             card,
             resp,
+            respU,
+            respD,
         }}>
             { children }
         </CardContext.Provider>

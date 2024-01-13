@@ -7,7 +7,7 @@ export const getCardRequest = ( id ) => axios.get(`tarjetas/${ id }`);
 //crear
 export const createCardRequest = ( card ) => axios.post(`tarjetas/`, card);
 //actualizar
-export const updateCardRequest = ( id, card ) => axios.put(`tarjetas/${ id }`, card);
+export const updateCardRequest = ( id, card ) => axios.put(`tarjetas/${ id }/`, card);
 //eliminar
-export const deletCardRequest = ( id ) => axios.delete(`tarjetas/${ id }`);
+export const deletCardRequest = ( id ) => axios.delete(`tarjetas/${ id }/`);
 

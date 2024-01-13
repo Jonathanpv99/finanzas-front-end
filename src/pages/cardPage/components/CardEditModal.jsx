@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { toast } from "react-toastify";
 import { useCard } from '../../../context/cardContext';
 
-const CardEditModal = ( { isVisible, onOk, onCancel, id } ) => {
+const CardEditModal = ( { isVisible, onCancel, id } ) => {
 
     const [ tarjeta , setTarjeta ] = useState( null );
 
@@ -41,7 +41,7 @@ const CardEditModal = ( { isVisible, onOk, onCancel, id } ) => {
         setTimeout(function() {
           location.reload();
           onCancel;
-        }, 3500);
+        }, 3000);
       } else if( respU !== null && respU !== 200 && respU !== undefined) {
         reset();
         MessageError();
@@ -55,17 +55,16 @@ const CardEditModal = ( { isVisible, onOk, onCancel, id } ) => {
       });
     };
 
-  const MessageSuccess = () => {
-    toast.success(`Tarjeta Actualizada con Exito`, {
-    position: toast.POSITION.TOP_CENTER,
-    });
-  };
+    const MessageSuccess = () => {
+      toast.success(`Tarjeta Actualizada con Exito`, {
+      position: toast.POSITION.TOP_CENTER,
+      });
+    };
 
     return (
         <Modal
           title="Editar tarjeta"
           open={ isVisible }
-          onOk={onOk}
           onCancel={ onCancel }
           footer={[
             <Button key="cancel" className='bg-red-700 text-white' onClick={ onCancel }>

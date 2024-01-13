@@ -27,7 +27,7 @@ const Nabvar = () => {
                 </Link>
             </div>
             <div>
-                <ul className='flex gap-x-20 items-center'>
+                <ul className='hidden lg:flex lg:gap-x-10 xl:gap-x-20items-center'>
                     {isAutenticated ? (
                         <>
                             <li className='bg-naranja rounded-lg p-2'>

@@ -49,7 +49,7 @@ const CardPage = () => {
                     Agregar <FontAwesomeIcon icon={ faPlusCircle }/>
                 </button>
             </div>
-            <div className="bg-azul-f grid grid-cols-4 gap-5 p-4 rounded-lg">
+            <div className="bg-azul-f grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-4 rounded-lg">
             { cards.map ( ( card ) => 
                     <Card 
                         key={ card.idTarjeta } 
